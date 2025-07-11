@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkss...</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+    <iframe src="https://open.spotify.com/embed/artist/4h2w55mRM0SkL9c0fu3qAC?utm_source=generator&theme=0" width="100%" height="735" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="eager"></iframe>
+
+    <h2 class="link"><button href="">Apple Music</button></h2>
+    <h2 class="link"><button href="">Youtube</button></h2>
+    <h2 class="link"><button href="">Sound Cloud</button></h2>
+    <h2 class="link"><button href="https://discord.com/users/1288908987676360744">My Discord</button></h2>
+    <h2 class="link"><button href="https://bsky.app/profile/pepsilatinha.bsky.social">BlueSky</button></h2>
+
+    <div id="about">
+        <h2>about me</h2>
+            <p translate="yes">pepsi is a music producer who explores electronic music, always trying to capture feelings and create vibrant atmospheres.</p>
+    </div>
+</main>
+    
+<footer>
+    <p translate="yes" class="footer rights">All rights reserved. Unauthorized use is prohibited.</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const userLang = navigator.language || navigator.userLanguage;
+    const p = document.querySelector('p[translate="yes"]');
+    if (p && !userLang.startsWith('en')) {
+        fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${userLang.split('-')[0]}&dt=t&q=${encodeURIComponent(p.textContent)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data[0] && data[0][0]) {
+                    let translated = data[0][0][0];
+                    translated = translated.charAt(0).toLowerCase() + translated.slice(1);
+                    p.textContent = translated;
+                }
+            });
+    }
+});
+</script>
+
+</body>
+</html>
