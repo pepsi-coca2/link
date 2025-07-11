@@ -1,16 +1,3 @@
-fetch(url, {
-    method: 'POST',
-    headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0',
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        q: "texto",
-    })
-})
-
 document.addEventListener("DOMContentLoaded", function() {
     const userLang = navigator.language || navigator.userLanguage;
     const p = document.querySelector('p[translate="yes"]');
@@ -25,4 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
     }
+});
+window.addEventListener('beforeunload', function () {
+    localStorage.clear();
+    sessionStorage.clear();
 });
